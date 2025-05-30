@@ -52,7 +52,6 @@ chmod +x htdocs/cgi-bin/*.pl     # 设置Perl脚本可执行权限
 chmod +x htdocs/cgi-bin/*.sh     # 设置Shell脚本可执行权限
 chmod +x htdocs/cgi-bin/*.js     # 设置Node.js脚本可执行权限
 
-# 第五组：启动HTTP服务器
 ./httpd                          # 运行编译生成的TinyHTTPd服务器
 ```
 
