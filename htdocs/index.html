@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TinyHTTPd - Multi-Language CGI Showcase</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .tagline {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .programs-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #87CEEB;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .program-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .language-tag {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .program-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .program-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .program-card p {
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .run-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.75rem 2rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .run-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .features {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #87CEEB;
+        }
+
+        .feature p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            opacity: 0.8;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 3rem;
+        }
+
+        /* Language-specific colors */
+        .cpp {
+            border-left: 4px solid #00599C;
+        }
+
+        .python {
+            border-left: 4px solid #3776AB;
+        }
+
+        .php {
+            border-left: 4px solid #777BB4;
+        }
+
+        .perl {
+            border-left: 4px solid #39457E;
+        }
+
+        .bash {
+            border-left: 4px solid #4EAA25;
+        }
+
+        .nodejs {
+            border-left: 4px solid #339933;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>TinyHTTPd Server</h1>
+            <p class="tagline">Multi-Language CGI Programming Showcase</p>
+        </header>
+
+        <div class="intro">
+            <p>Welcome to the TinyHTTPd demonstration server showcasing CGI programming across 6 different languages.
+            </p>
+            <p>Each program demonstrates unique capabilities and language-specific features.</p>
+            <div class="tech-badges">
+                <span class="badge">HTTP/1.0</span>
+                <span class="badge">CGI Interface</span>
+                <span class="badge">Multi-Language</span>
+                <span class="badge">Educational Platform</span>
+            </div>
+        </div>
+
+        <section class="programs-section">
+            <h2 class="section-title">Core CGI Programs</h2>
+            <div class="programs-grid">
+                <div class="program-card cpp">
+                    <span class="language-tag">C++</span>
+                    <div class="program-icon">⚙️</div>
+                    <h3>System Monitor</h3>
+                    <p>Real-time system monitoring with performance metrics, hardware information, and process details.
+                        Compiled to native code for optimal performance.</p>
+                    <a href="/cgi-bin/monitor.cgi" class="run-button">Launch Monitor</a>
+                </div>
+
+                <div class="program-card python">
+                    <span class="language-tag">Python</span>
+                    <div class="program-icon">📊</div>
+                    <h3>Data Processor</h3>
+                    <p>Statistical analysis tool with data visualization capabilities. Process custom datasets and
+                        generate comprehensive statistical reports.</p>
+                    <a href="/cgi-bin/dataproc.py" class="run-button">Process Data</a>
+                </div>
+
+                <div class="program-card php">
+                    <span class="language-tag">PHP</span>
+                    <div class="program-icon">📝</div>
+                    <h3>Form Handler</h3>
+                    <p>Interactive form processing with validation and sanitization. Demonstrates PHP's web development
+                        capabilities with user feedback.</p>
+                    <a href="/cgi-bin/formhandler.php" class="run-button">Open Form</a>
+                </div>
+
+                <div class="program-card perl">
+                    <span class="language-tag">Perl</span>
+                    <div class="program-icon">🔍</div>
+                    <h3>Text Processor</h3>
+                    <p>Advanced text manipulation with regex support. Transform, analyze, and process text content using
+                        Perl's powerful string handling.</p>
+                    <a href="/cgi-bin/textproc.pl" class="run-button">Process Text</a>
+                </div>
+
+                <div class="program-card bash">
+                    <span class="language-tag">Bash</span>
+                    <div class="program-icon">📁</div>
+                    <h3>File Operations</h3>
+                    <p>File system explorer and management utilities. Browse directories, view system information, and
+                        perform file operations.</p>
+                    <a href="/cgi-bin/fileops.sh" class="run-button">Explore Files</a>
+                </div>
+
+                <div class="program-card nodejs">
+                    <span class="language-tag">Node.js</span>
+                    <div class="program-icon">🚀</div>
+                    <h3>JSON API Service</h3>
+                    <p>RESTful API with dynamic data generation. Multiple endpoints for structured data retrieval and
+                        system information in JSON format.</p>
+                    <a href="/cgi-bin/jsonapi.js" class="run-button">Access API</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <h2 class="section-title">Platform Features</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">🔧</div>
+                    <h4>6 Languages</h4>
+                    <p>C++, Python, PHP, Perl, Bash, Node.js</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h4>Live Execution</h4>
+                    <p>Real-time code execution via CGI</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📚</div>
+                    <h4>Educational</h4>
+                    <p>Learn web programming concepts</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🌐</div>
+                    <h4>HTTP/1.0</h4>
+                    <p>Classic web protocol implementation</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>TinyHTTPd Server - Educational Multi-Language CGI Platform</p>
+            <p>Running on Port 4000</p>
+        </footer>
+    </div>
+</body>
+
+</html>
