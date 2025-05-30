@@ -1,81 +1,46 @@
-# TinyHTTPd Multi-Language CGI Programs
+🌐 TinyHTTPd Multi-Language CGI Programs
+欢迎来到多语言CGI编程的精彩世界！这个项目展示了6种不同编程语言在Web开发中的独特魅力和强大能力。
+🎯 核心CGI程序大家族
+1. 🖥️ C++ 系统监控专家 (monitor.cgi)
 
-This directory contains CGI programs written in 6 different programming languages, demonstrating the versatility of CGI programming and showcasing each language's unique capabilities.
+编程语言: C++ (编译型) 💪
+超能力: 实时系统监控、性能指标分析、硬件信息探测
+编译魔法: g++ -o monitor.cgi monitor.cpp
+特色: 高性能、低延迟、系统级访问
 
-## Core CGI Programs
+2. 🐍 Python 数据处理大师 (dataproc.py)
 
-### 1. **C++ System Monitor** (`monitor.cgi`)
-- **Language**: C++ (Compiled)
-- **Features**: Real-time system monitoring, performance metrics, hardware info
-- **Compilation**: `g++ -o monitor.cgi monitor.cpp`
+编程语言: Python 3 🔥
+超能力: 统计分析、数据可视化、自定义数据集处理
+依赖库: Python标准库生态
+特色: 简洁优雅、功能丰富、科学计算
 
-### 2. **Python Data Processor** (`dataproc.py`)
-- **Language**: Python 3
-- **Features**: Statistical analysis, data visualization, custom dataset processing
-- **Dependencies**: Standard Python libraries
+3. 🌟 PHP 表单处理专家 (formhandler.php)
 
-### 3. **PHP Form Handler** (`formhandler.php`)
-- **Language**: PHP
-- **Features**: Form validation, data sanitization, user feedback
-- **Dependencies**: PHP CLI
+编程语言: PHP ⚡
+超能力: 表单验证、数据清理、用户反馈处理
+运行环境: PHP CLI
+特色: Web开发利器、动态内容生成
 
-### 4. **Perl Text Processor** (`textproc.pl`)
-- **Language**: Perl
-- **Features**: Text analysis, regex transformations, string manipulation
-- **Dependencies**: Perl with CGI module
+4. 🔍 Perl 文本处理忍者 (textproc.pl)
 
-### 5. **Bash File Operations** (`fileops.sh`)
-- **Language**: Bash Shell
-- **Features**: File system browsing, system information, directory operations
-- **Dependencies**: Standard Linux/Unix commands
+编程语言: Perl 🥷
+超能力: 文本分析、正则表达式变换、字符串魔法操作
+依赖模块: Perl CGI模块
+特色: 正则表达式之王、文本处理无敌
 
-### 6. **Node.js JSON API** (`jsonapi.js`)
-- **Language**: Node.js
-- **Features**: RESTful API, JSON data generation, multiple endpoints
-- **Dependencies**: Node.js runtime
+5. 🐧 Bash 文件操作勇士 (fileops.sh)
 
-## Running the Server
+编程语言: Bash Shell 🛡️
+超能力: 文件系统浏览、系统信息获取、目录批量操作
+运行环境: 标准Linux/Unix命令
+特色: 系统原生、轻量高效、自动化神器
 
-1. Compile the server:
-   ```bash
-   cd build
-   make
-   ```
+6. 🚀 Node.js JSON API 魔法师 (jsonapi.js)
 
-2. Start the server:
-   ```bash
-   ./httpd
-   ```
+编程语言: Node.js ✨
+超能力: RESTful API构建、JSON数据生成、多端点服务
+运行时: Node.js JavaScript引擎
+特色: 异步高并发、现代Web标准
 
-3. Access the web interface:
-   ```
-   http://localhost:4000/
-   ```
-
-## Requirements
-
-- **Linux/Unix system**
-- **Development tools**: gcc, g++, make
-- **Runtime dependencies**: 
-  - PHP CLI (`php`)
-  - Python 3 (`python3`)
-  - Perl (`perl`)
-  - Node.js (`node`)
-  - Standard Unix utilities
-
-## CGI Execution
-
-All CGI programs follow the CGI specification:
-- Output starts with HTTP headers (minimum: `Content-type`)
-- Empty line separates headers from body
-- Programs receive input via environment variables and stdin
-- Query parameters available in `QUERY_STRING` environment variable
-
-## Educational Purpose
-
-This project demonstrates:
-- Multi-language web programming
-- CGI interface implementation
-- HTTP/1.0 protocol handling
-- Server-side dynamic content generation
-- Cross-language comparison for web development 
+🏃‍♂️ 快速启动指南
