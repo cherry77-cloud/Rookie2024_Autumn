@@ -57,13 +57,6 @@ chmod +x htdocs/cgi-bin/*.js     # 设置Node.js脚本可执行权限
 ```
 
 ## ⚡ CGI执行原理
-📤 HTTP头部输出 (最少包含: Content-type)
-📝 空行分隔 头部与正文内容
-🔄 环境变量输入 通过环境变量和stdin接收数据
-🔍 查询参数 通过 QUERY_STRING 环境变量获取
-🏎️ C++ 的高性能系统编程
-🐍 Python 的数据处理能力
-🌟 PHP 的 Web 开发便利性
-🥷 Perl 的文本处理强大功能
-🛡️ Bash 的系统自动化能力
-🚀 Node.js 的现代异步编程
+- 📤 HTTP头部输出 (最少包含: Content-type)，📝 空行分隔 头部与正文内容，🔄 环境变量输入 通过环境变量和stdin接收数据，🔍 查询参数 通过 QUERY_STRING 环境变量获取
+- 🏎️ C++ 的高性能系统编程，🐍 Python 的数据处理能力，🌟 PHP 的 Web 开发便利性，🥷 Perl 的文本处理强大功能，🛡️ Bash 的系统自动化能力，🚀 Node.js 的现代异步编程
+- 🌈 多语言Web编程 🔌 CGI接口实现 🌐 HTTP/1.0协议处理 ⚡ 服务器端动态内容生成 📊 跨语言比较研究
